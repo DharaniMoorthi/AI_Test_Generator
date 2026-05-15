@@ -1,6 +1,7 @@
 from openai import OpenAI
-client = OpenAI(api_key="")
-prompt= """
+client = OpenAI(api_key="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+prompt = """
 
 Generate test cases for a login page with:
 - username
@@ -22,5 +23,13 @@ response = client.chat.completions.create(
   ]
 )
 
-print(response.choices[0].message.content)
+output=(response.choices[0].message.content)
 
+print(output)
+
+with open("test_cases.txt", "w", encoding="utf-8") as file:
+    file.write(output)
+
+    print("Test cases have been written to test_cases.txt")
+
+    
